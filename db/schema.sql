@@ -29,7 +29,7 @@ CREATE TABLE general_ledger(
   account_name TEXT,
   description TEXT,
   date DATE,
-  debit_amount INT,
-  credit_amount INT,
+  debit INT,
+  credit INT,
   currency TEXT
-)
+);
