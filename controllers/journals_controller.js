@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require('bcrypt')
 
 // models
 const Journal = require('../models/journals')
@@ -12,3 +11,5 @@ router.post('/', (req, res) => {
   Journal
     .create(journalNum, accNum, accName, currency, debit, credit)
 })
+
+module.exports = router
