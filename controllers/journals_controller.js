@@ -6,10 +6,18 @@ const Journal = require('../models/journals')
 
 // routes
 router.post('/', (req, res) => {
-  const { journalNum, accNum, accName, currency, debit, credit } = req.body
+  const { entityId, userId, jrnlNum, narration, date, description, accNum, accName, currency, debit, credit } = req.body
 
   Journal
-    .create(journalNum, accNum, accName, currency, debit, credit)
+    .create( entityId, userId, jrnlNum, narration, date, description, accNum, accName, currency, debit, credit )
+})
+
+router.get('/:id', (req, res) => {
+  const userId = req.params.id
+
+  Journal
+    .findByUser(userId)
+    .then(journals => res.json(journals))
 })
 
 module.exports = router

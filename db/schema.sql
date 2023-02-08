@@ -24,12 +24,14 @@ UNIQUE(email);
 CREATE TABLE general_ledger(
   id SERIAL PRIMARY KEY,
   entity_id INT,
+  user_id INT,
   journal_number INT,
+  jrnl_narration TEXT,
+  date DATE,
+  line_description TEXT,
   account_number INT,
   account_name TEXT,
-  description TEXT,
-  date DATE,
+  currency TEXT,
   debit INT,
-  credit INT,
-  currency TEXT
+  credit INT
 );
