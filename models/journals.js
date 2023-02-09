@@ -21,8 +21,24 @@ const Journal = {
     return db
       .query(sql, [userId])
       .then(dbRes => {
-        console.log('dbRes:')
-        console.log(dbRes.rows)
+        return dbRes.rows
+      })
+  },
+
+  sumByUser: ( userId ) => {
+    const sql = `
+      SELECT account_number,
+      account_name, 
+      SUM(debit) AS total_debits, 
+      SUM(credit) AS total_credits 
+      FROM general_ledger 
+      WHERE user_id = $1
+      GROUP BY account_number, account_name
+    `
+
+    return db
+      .query(sql, [userId])
+      .then(dbRes => {
         return dbRes.rows
       })
   },

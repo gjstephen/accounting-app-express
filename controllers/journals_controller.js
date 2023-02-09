@@ -20,11 +20,11 @@ router.get('/:id', (req, res) => {
     .then(journals => res.json(journals))
 })
 
-router.get('/', (req, res) => {
-  console.log('successful destructure')
+router.get('/trialBalance/:id', (req, res) => {
+  const userId = req.params.id
 
   Journal
-    .findAll()
+    .sumByUser(userId)
     .then(journals => res.json(journals))
 })
 
