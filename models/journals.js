@@ -20,6 +20,20 @@ const Journal = {
 
     return db
       .query(sql, [userId])
+      .then(dbRes => {
+        console.log('dbRes:')
+        console.log(dbRes.rows)
+        return dbRes.rows
+      })
+  },
+
+  findAll: () => {
+    const sql = `
+      SELECT * FROM general_ledger
+    `
+
+    return db
+      .query(sql)
       .then(dbRes => dbRes.rows)
   }
 }

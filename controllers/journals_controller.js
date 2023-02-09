@@ -20,4 +20,12 @@ router.get('/:id', (req, res) => {
     .then(journals => res.json(journals))
 })
 
+router.get('/', (req, res) => {
+  console.log('successful destructure')
+
+  Journal
+    .findAll()
+    .then(journals => res.json(journals))
+})
+
 module.exports = router
